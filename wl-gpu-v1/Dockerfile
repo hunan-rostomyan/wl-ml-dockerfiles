@@ -1,4 +1,8 @@
 from ubuntu:16.04
 
+RUN apt-get update
+RUN apt-get install -y python-pip python-dev build-essential
+RUN apt-get install -y python3-pip
+
 CMD ["/bin/bash"]
 
