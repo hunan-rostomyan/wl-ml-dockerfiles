@@ -13,6 +13,7 @@ RUN apt-get install -y vim
 # Python
 RUN apt-get install -y python-pip python3-pip python-dev build-essential
 RUN pip install --upgrade pip
+RUN pip3 install --upgrade pip
 RUN apt-get install -y python-virtualenv
 
 # Tensorflow
@@ -25,6 +26,8 @@ RUN virtualenv --system-site-packages tf
 
 # Activate the venv
 RUN source /home/tf/bin/activate
+
+RUN pip3 install --upgrade tensorflow-gpu
 
 CMD ["/bin/bash"]
 
