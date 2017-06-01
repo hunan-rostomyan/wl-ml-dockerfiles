@@ -43,6 +43,18 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y keyboard-configuration
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y cuda
 
+ENV PATH "/usr/local/cuda-8.0/bin${PATH:+:${PATH}}"
+ENV LD_LIBRARY_PATH "/usr/local/cuda-8.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
+
+# install CUDA neural networks library
+COPY cudnn-8.0-linux-x64-v6.0.tgz /tmp/cuda_install
+RUN tar -xzvf cudnn-8.0-linux-x64-v6.0.tgz
+RUN cp cuda/lib64/libcudnn* /usr/local/cuda-8.0/lib64/
+RUN cp cuda/include/cudnn.h /usr/local/cuda-8.0/include
+
+# fix the dynamic library issue
+RUN ln -s /usr/local/cuda-8.0/lib64/libcudnn.so /usr/local/cuda-8.0/lib64/libcudnn.so.5
+
 WORKDIR /home
 
 CMD ["/bin/bash"]
