@@ -1,2 +1,2 @@
 #!/bin/bash
-docker build -t wl-ml-gpu-v1 .
+docker build -t hunan131/wl-ml-gpu-v1 .

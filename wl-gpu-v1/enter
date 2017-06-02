@@ -1,2 +1,2 @@
 #!/bin/bash
-docker run -ti wl-ml-gpu-v1
+docker run -ti hunan131/wl-ml-gpu-v1
