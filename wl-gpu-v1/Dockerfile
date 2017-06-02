@@ -55,6 +55,9 @@ RUN cp cuda/include/cudnn.h /usr/local/cuda-8.0/include
 # fix the dynamic library issue
 RUN ln -s /usr/local/cuda-8.0/lib64/libcudnn.so /usr/local/cuda-8.0/lib64/libcudnn.so.5
 
+# clean up
+RUN rm -rf /tmp/cuda_install
+
 WORKDIR /home
 
 CMD ["/bin/bash"]
