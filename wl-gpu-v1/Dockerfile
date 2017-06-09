@@ -13,6 +13,7 @@ RUN apt-get install -y vim
 
 # Python
 RUN apt-get install -y python-pip python3-pip python-dev build-essential
+RUN apt-get install -y python3-tk
 RUN pip install --upgrade pip
 RUN pip3 install --upgrade pip
 RUN apt-get install -y python-virtualenv
@@ -42,9 +43,6 @@ RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y keyboard-configuration
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y cuda
-
-ENV PATH "/usr/local/cuda-8.0/bin${PATH:+:${PATH}}"
-ENV LD_LIBRARY_PATH "/usr/local/cuda-8.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
 
 # install CUDA neural networks library
 COPY cudnn-8.0-linux-x64-v6.0.tgz /tmp/cuda_install
