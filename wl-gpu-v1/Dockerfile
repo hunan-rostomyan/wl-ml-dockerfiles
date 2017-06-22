@@ -32,6 +32,13 @@ RUN source /home/tf/bin/activate
 # Install Tensorflow
 RUN pip3 install --upgrade tensorflow-gpu
 
+# Install spacy and its models
+RUN pip3 install spacy
+RUN python3 -m spacy download en
+
+# Install ipython
+RUN pip3 install ipython
+
 # Install CUDA toolkit
 RUN mkdir /tmp/cuda_install
 WORKDIR /tmp/cuda_install
